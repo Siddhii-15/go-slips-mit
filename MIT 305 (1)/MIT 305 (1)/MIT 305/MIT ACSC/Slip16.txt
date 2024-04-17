@@ -1,0 +1,56 @@
+Slip 16:
+Q1. B) Write a program in GO language that prints out the numbers from0 to 10, waiting between 0 
+and 250 ms after each one using the delay function 
+
+package main 
+import ( 
+ "fmt" 
+ "time" 
+) 
+func main() { 
+ for i := 0; i <= 10; i++ { 
+ fmt.Println(i) 
+ time.Sleep(250 * time.Millisecond) 
+ } 
+} 
+
+/////////////////////////////////////////////////////////////////////////////
+Q2.IOT
+
+import RPi.GPIO as GPIO 
+import time GPIO.setwarnings(False) 
+GPIO.setmode(GPIO.BCM) 
+cnt = 0 
+Blink_Time = 1 # Change LED status every 1 second 
+RED_LED = 14 
+GPIO.setup(RED_LED, GPIO.OUT) 
+try: 
+ while True: 
+ if cnt == 0: 
+ GPIO.output(RED_LED, False) 
+ cnt = 1 
+ else: 
+ GPIO.output(RED_LED, True) 
+ cnt = 0 
+ time.sleep(Blink_Time) 
+except KeyboardInterrupt: 
+ # Clean up GPIO on keyboard interrupt 
+ GPIO.cleanup() 
+ ///////////////////////////////////////////////////////////
+
+Observations:
+1. Input:
+Any obstacle that comes in the range of the sensor is detected. IR sensors actually measure the
+heat being emitted from the object. So the heat is the actual input for the sensors. The IR
+sensor gets its input from GPIO 21.
+2. Output:
+The output is shown by the LED’s and the buzzer. When an obstacle is detected, the Green
+LED glows and buzzer is turned on, i.e. whenever heat is sensed by the sensor, output is
+shown.
+The output is shown by making the GPIO 15(Green LED) and GPIO 18 (buzzer) HIGH.
+
+Conclusion:
+We have successfully implemented the connection of IR sensor with Raspberry Pi/Beagle
+bone/Arduino for obstacle detection. The output is shown by a glowing LED’s and buzzer.
+
+

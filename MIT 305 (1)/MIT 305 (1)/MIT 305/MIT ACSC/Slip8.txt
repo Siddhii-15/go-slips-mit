@@ -1,0 +1,76 @@
+Slip 8:
+ Q1.A Write a program in GO language to accept the book details such as BookID, Title, Author, Price. 
+Read and display the details of ‘n’ number of books 
+
+package main 
+import "fmt" 
+type book struct{ 
+ id int 
+ title string 
+ author string 
+ price float64 
+} 
+func main(){ 
+ var books1 book 
+ var n int 
+ fmt.Printf("Enter number of books:") 
+ fmt.Scanf("%d",&n) 
+ 
+ for i:=0;i<n;i++{ 
+ fmt.Println("Enter Book id:") 
+ fmt.Scanf("%d",&books1.id) 
+ fmt.Printf("Enter Book title:") 
+ fmt.Scanf("%s",&books1.title) 
+ fmt.Printf("Enter Book author:") 
+ fmt.Scanf("%s",&books1.author) 
+ fmt.Println("Enter Book price:") 
+ fmt.Scanf("%f",&books1.price) 
+ 
+ fmt.Println("Book id:",books1.id) 
+ fmt.Println("Book title:",books1.title) 
+ fmt.Println("Book author:",books1.author) 
+ fmt.Println("Book price:",books1.price) 
+ } 
+} 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+Q2.IOT
+
+import RPi.GPIO as GPIO 
+import time GPIO.setwarnings(False) 
+GPIO.setmode(GPIO.BCM) 
+cnt = 0 
+Blink_Time = 1 # Change LED status every 1 second 
+RED_LED = 14 
+GPIO.setup(RED_LED, GPIO.OUT) 
+try: 
+ while True: 
+ if cnt == 0: 
+ GPIO.output(RED_LED, False) 
+ cnt = 1 
+ else: 
+ GPIO.output(RED_LED, True) 
+ cnt = 0 
+ time.sleep(Blink_Time) 
+except KeyboardInterrupt: 
+ # Clean up GPIO on keyboard interrupt 
+ GPIO.cleanup() 
+
+///////////////////////////////////////////////////////////
+
+Observations:
+1. Input:
+Any obstacle that comes in the range of the sensor is detected. IR sensors actually measure the
+heat being emitted from the object. So the heat is the actual input for the sensors. The IR
+sensor gets its input from GPIO 21.
+2. Output:
+The output is shown by the LED’s and the buzzer. When an obstacle is detected, the Green
+LED glows and buzzer is turned on, i.e. whenever heat is sensed by the sensor, output is
+shown.
+The output is shown by making the GPIO 15(Green LED) and GPIO 18 (buzzer) HIGH.
+
+Conclusion:
+We have successfully implemented the connection of IR sensor with Raspberry Pi/Beagle
+bone/Arduino for obstacle detection. The output is shown by a glowing LED’s and buzzer.
+
+

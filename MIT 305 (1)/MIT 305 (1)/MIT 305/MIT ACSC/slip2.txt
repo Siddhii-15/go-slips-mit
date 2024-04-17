@@ -1,0 +1,33 @@
+q1.A) Write a program in GO language to print Fibonacci series of n terms. 
+
+package main 
+import "fmt" 
+func main(){ 
+var i,n int 
+a:=0 
+b:=1 
+fmt.Print("Enter The n Value:") 
+fmt.Scan(&n) 
+for i=0;i<n;i++{ 
+fmt.Println(a) 
+c:=a 
+a=b 
+b=c + b 
+} 
+} 
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Q2.a.IOT
+
+import RPi.GPIO as GPIO # Import Raspberry Pi GPIO library 
+from time import sleep # Import the sleep function from the time module 
+GPIO.setwarnings(False) # Ignore warning for now 
+GPIO.setmode(GPIO.BOARD) # Use physical pin numbering 
+Buzzer = 18 
+GPIO.setup(Buzzer, GPIO.OUT, initial=GPIO.LOW) 
+while True: # Run forever 
+ GPIO.output(Buzzer, True) # Turn ON 
+ sleep(1) # Sleep for 1 second 
+ GPIO.output(Buzzer, False) # Turn OFF 
+ sleep(1) # Sleep for 1 second

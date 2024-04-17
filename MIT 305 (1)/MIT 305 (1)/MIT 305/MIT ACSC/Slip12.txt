@@ -1,0 +1,68 @@
+Slip 12:
+Q1.A. Write a program in GO language to swap two numbers using call by reference concept. 
+package main 
+import "fmt" 
+ func swap(a *int,b *int){ 
+ temp := *a 
+ *a = *b 
+ *b = temp 
+ } 
+ func main(){ 
+ var n1,n2 int 
+ fmt.Printf("Enter number1") 
+ fmt.Scanf("%d",&n1) 
+ fmt.Printf("Enter number2") 
+ fmt.Scanf("%d",&n2) 
+ fmt.Println("Before swapping:") 
+ fmt.Println("First number:", n1) 
+ fmt.Println("Second number:", n2) 
+ swap(&n1,&n2) 
+ fmt.Println("After swapping:") 
+ fmt.Println("First number:", n1) 
+ fmt.Println("Second number:", n2) 
+ } 
+/////////////////////////////////////////////////////////////////////////////////////////////// 
+Q2.IOT
+
+import RPi.GPIO as GPIO 
+from time import sleep 
+GPIO.setwarnings(False) 
+GPIO.setmode(GPIO.BOARD) 
+RED_LED = 14 
+GREEN_LED = 15 
+GPIO.setup(RED_LED, GPIO.OUT, initial=GPIO.LOW) 
+GPIO.setup(GREEN_LED, GPIO.OUT, initial=GPIO.LOW) 
+while True: 
+ GPIO.output(RED_LED, True) 
+ GPIO.output(GREEN_LED, False) 
+ sleep(1) 
+ GPIO.output(RED_LED, False) 
+ GPIO.output(GREEN_LED, True) 
+ sleep(1) 
+///////////////////////////////////////////////////////////
+
+Observations:
+1. Input:
+Any obstacle that comes in the range of the sensor is detected. IR sensors actually measure the
+heat being emitted from the object. So the heat is the actual input for the sensors. The IR
+sensor gets its input from GPIO 21.
+2. Output:
+The output is shown by the LED’s and the buzzer. When an obstacle is detected, the Green
+LED glows and buzzer is turned on, i.e. whenever heat is sensed by the sensor, output is
+shown.
+The output is shown by making the GPIO 15(Green LED) and GPIO 18 (buzzer) HIGH.
+
+Conclusion:
+We have successfully implemented the connection of IR sensor with Raspberry Pi/Beagle
+bone/Arduino for obstacle detection. The output is shown by a glowing LED’s and buzzer.
+
+
+
+
+
+
+
+
+
+
+

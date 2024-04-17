@@ -1,0 +1,107 @@
+Slip 9:
+Q1) Palindrome or not
+package main
+import "fmt"
+func palindrome(n int) {
+original := n
+rev := 0
+for n != 0 {
+a := n % 10
+rev = rev*10 + a
+n = n / 10
+}
+if original == rev {
+fmt.Println("Palindrome")
+} else {
+fmt.Println("Not Palindrome")
+}
+}
+
+func main() {
+var n int
+fmt.Println("Enter the number:")
+fmt.Scanf("%d", &n)
+palindrome(n)
+}
+/////////////////////////////////   OR /////////////////
+Q1.B. Write a program in GO language to create an interface shape that includes area and volume. 
+Implements these methods in square and rectangle type. 
+
+package main 
+import "fmt" 
+type shape interface{ 
+ area() 
+ volume() 
+} 
+type square struct{ 
+ side int 
+} 
+type rectangle struct{ 
+ l int 
+ b int 
+} 
+func (s square)area()int{ 
+ return s.side*s.side 
+} 
+func (s square)volume()int{ 
+ return 0 
+} 
+func (r rectangle)area()int{ 
+ return r.l*r.b 
+} 
+func (r rectangle)volume()int{ 
+ return 0 
+} 
+func main(){ 
+ sq:=square{side:5} 
+ rec:=rectangle{l:10,b:5} 
+ 
+ fmt.Println("Area:",sq.area()) 
+ fmt.Println("vol:",sq.volume()) 
+ fmt.Println("Area:",rec.area()) 
+ fmt.Println("Area:",rec.volume()) 
+ 
+} 
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+Q2.IOT.
+
+import RPi.GPIO as GPIO 
+import time GPIO.setwarnings(False) 
+GPIO.setmode(GPIO.BCM) 
+cnt = 0 
+Blink_Time = 1 # Change LED status every 1 second 
+RED_LED = 14 
+GPIO.setup(RED_LED, GPIO.OUT) 
+try: 
+ while True: 
+ if cnt == 0: 
+ GPIO.output(RED_LED, False) 
+ cnt = 1 
+ else: 
+ GPIO.output(RED_LED, True) 
+ cnt = 0 
+ time.sleep(Blink_Time) 
+except KeyboardInterrupt: 
+ # Clean up GPIO on keyboard interrupt 
+ GPIO.cleanup() 
+
+///////////////////////////////////////////////////////////
+
+Observations:
+1. Input:
+Any obstacle that comes in the range of the sensor is detected. IR sensors actually measure the
+heat being emitted from the object. So the heat is the actual input for the sensors. The IR
+sensor gets its input from GPIO 21.
+2. Output:
+The output is shown by the LED’s and the buzzer. When an obstacle is detected, the Green
+LED glows and buzzer is turned on, i.e. whenever heat is sensed by the sensor, output is
+shown.
+The output is shown by making the GPIO 15(Green LED) and GPIO 18 (buzzer) HIGH.
+
+Conclusion:
+We have successfully implemented the connection of IR sensor with Raspberry Pi/Beagle
+bone/Arduino for obstacle detection. The output is shown by a glowing LED’s and buzzer.
+
+

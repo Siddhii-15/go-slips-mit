@@ -1,0 +1,55 @@
+Slip 19:
+Q1 Write a program in GO language to illustrate the function returning multiple values(add, subtract)
+
+package main 
+import "fmt" 
+func addAndSubtract(a, b int) (int,int){ 
+ add := a + b 
+ subtract:= a - b 
+ return add, subtract 
+} 
+func main() { 
+ var num1 int 
+ var num2 int 
+ fmt.Println("Enter 1st number:") 
+ fmt.Scanf("%d",&num1) 
+ fmt.Println("Enter 2nd number:") 
+ fmt.Scanf("%d",&num2) 
+ a,b:= addAndSubtract(num1, num2) 
+ fmt.Println("Addition:", a) 
+ fmt.Println("Subtraction:", b) 
+} 
+//////////////////////////////////////////////////////////////////////////////////////////////////// 
+
+Q2.IOT
+
+import RPi.GPIO as GPIO # Import Raspberry Pi GPIO library 
+from time import sleep # Import the sleep function from the time module 
+GPIO.setwarnings(False) # Ignore warning for now 
+GPIO.setmode(GPIO.BOARD) # Use physical pin numbering 
+Buzzer = 18 
+GPIO.setup(Buzzer, GPIO.OUT, initial=GPIO.LOW) 
+while True: # Run forever 
+ GPIO.output(Buzzer, True) # Turn ON 
+ sleep(1) # Sleep for 1 second 
+ GPIO.output(Buzzer, False) # Turn OFF 
+ sleep(1) # Sleep for 1 second
+ 
+ ///////////////////////////////////////////////////////////
+
+Observations:
+1. Input:
+Any obstacle that comes in the range of the sensor is detected. IR sensors actually measure the
+heat being emitted from the object. So the heat is the actual input for the sensors. The IR
+sensor gets its input from GPIO 21.
+2. Output:
+The output is shown by the LED’s and the buzzer. When an obstacle is detected, the Green
+LED glows and buzzer is turned on, i.e. whenever heat is sensed by the sensor, output is
+shown.
+The output is shown by making the GPIO 15(Green LED) and GPIO 18 (buzzer) HIGH.
+
+Conclusion:
+We have successfully implemented the connection of IR sensor with Raspberry Pi/Beagle
+bone/Arduino for obstacle detection. The output is shown by a glowing LED’s and buzzer.
+
+

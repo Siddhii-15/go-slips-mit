@@ -1,0 +1,63 @@
+Slip7: 
+Q2.B. Write a program in GO language to create structure student. Writea method show() whose 
+receiver is a pointer of struct student.
+
+package main
+import "fmt"
+type student struct{  //define a struct called student
+Name string
+Age int
+Grade int
+}
+
+// Method to display student info
+func(s *student)show(){
+
+fmt.Println("Name:",s.Name)
+fmt.Println("Age: ",s.Age)
+fmt.Println("Grade:",s.Grade)
+}
+func main(){
+s:=student{ //  creating student obj
+Name:"shubham",
+Age: 21,
+Grade:90,
+}
+
+s.show()  //calling the show method()
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////////////
+Q2.IOT
+
+import RPi.GPIO as GPIO # Import Raspberry Pi GPIO library 
+from time import sleep # Import the sleep function from the time module 
+GPIO.setwarnings(False) # Ignore warning for now 
+GPIO.setmode(GPIO.BOARD) # Use physical pin numbering 
+Buzzer = 18 
+GPIO.setup(Buzzer, GPIO.OUT, initial=GPIO.LOW) 
+while True: # Run forever 
+ GPIO.output(Buzzer, True) # Turn ON 
+ sleep(1) # Sleep for 1 second 
+ GPIO.output(Buzzer, False) # Turn OFF 
+ sleep(1) # Sleep for 1 second
+ 
+ ///////////////////////////////////////////////////////////
+
+Observations:
+1. Input:
+Any obstacle that comes in the range of the sensor is detected. IR sensors actually measure the
+heat being emitted from the object. So the heat is the actual input for the sensors. The IR
+sensor gets its input from GPIO 21.
+2. Output:
+The output is shown by the LED’s and the buzzer. When an obstacle is detected, the Green
+LED glows and buzzer is turned on, i.e. whenever heat is sensed by the sensor, output is
+shown.
+The output is shown by making the GPIO 15(Green LED) and GPIO 18 (buzzer) HIGH.
+
+Conclusion:
+We have successfully implemented the connection of IR sensor with Raspberry Pi/Beagle
+bone/Arduino for obstacle detection. The output is shown by a glowing LED’s and buzzer.
+
+

@@ -1,0 +1,62 @@
+Slip 13:
+Q1.A. Write a program in GO language to print sum of all even and odd numbers separately between 
+1 to 100 
+package main 
+import "fmt" 
+func main(){ 
+ sumeven:=0 
+ sumodd:=0 
+ for i := 1; i <= 100; i++{ 
+ if i%2 == 0{ 
+ sumeven=sumeven+i 
+ }else{ 
+ sumodd=sumodd+i 
+ } 
+ } 
+ fmt.Println("Sum of even number:",sumeven) 
+ fmt.Println("Sum of odd number:",sumodd) 
+} 
+/////////////////////////////////////////////////////////////////////////////////////////////////// 
+Q2.IOT
+
+import RPi.GPIO as GPIO 
+from time import sleep 
+GPIO.setwarnings(False) 
+GPIO.setmode(GPIO.BOARD) 
+RED_LED = 14 
+GREEN_LED = 15 
+GPIO.setup(RED_LED, GPIO.OUT, initial=GPIO.LOW) 
+GPIO.setup(GREEN_LED, GPIO.OUT, initial=GPIO.LOW) 
+while True: 
+ GPIO.output(RED_LED, True) 
+ GPIO.output(GREEN_LED, False) 
+ sleep(1) 
+ GPIO.output(RED_LED, False) 
+ GPIO.output(GREEN_LED, True) 
+ sleep(1)
+
+
+
+///////////////////////////////////////////////////////////
+
+Observations:
+1. Input:
+Any obstacle that comes in the range of the sensor is detected. IR sensors actually measure the
+heat being emitted from the object. So the heat is the actual input for the sensors. The IR
+sensor gets its input from GPIO 21.
+2. Output:
+The output is shown by the LED’s and the buzzer. When an obstacle is detected, the Green
+LED glows and buzzer is turned on, i.e. whenever heat is sensed by the sensor, output is
+shown.
+The output is shown by making the GPIO 15(Green LED) and GPIO 18 (buzzer) HIGH.
+
+Conclusion:
+We have successfully implemented the connection of IR sensor with Raspberry Pi/Beagle
+bone/Arduino for obstacle detection. The output is shown by a glowing LED’s and buzzer.
+
+
+
+ 
+
+
+

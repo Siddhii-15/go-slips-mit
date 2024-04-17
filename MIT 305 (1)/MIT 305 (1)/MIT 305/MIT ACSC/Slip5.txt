@@ -1,0 +1,85 @@
+Slip 5:
+Q1. B) Write a program in GO language to accept n records of employee information 
+(eno,ename,salary) and display records of employees having minimum salary.
+
+package main 
+import "fmt" 
+type Employee struct{ 
+ eno int 
+ ename string 
+ salary float64 
+} 
+func main(){ 
+ var n int 
+ fmt.Println("Enter the number of employee records:") 
+ fmt.Scan(&n) 
+ emp := make([]Employee,n) 
+for i:=0;i<n;i++{ 
+ var eno int 
+ var ename string 
+ var salary float64 
+ fmt.Printf("Enter details for employee %d: \n",i+1) 
+ fmt.Print("Employee Number: ") 
+ fmt.Scan(&eno) 
+ fmt.Print("Employee Name :") 
+ fmt.Scan(&ename) 
+ fmt.Print("Salary: ") 
+ fmt.Scan(&salary) 
+ emp[i]=Employee{eno,ename,salary} 
+ } 
+ minsalary := emp[0].salary 
+ for i:=0;i<n;i++{ 
+ if emp[i].salary < minsalary { 
+ minsalary = emp[i].salary 
+ } 
+ } 
+fmt.Println("\n Employees with Minimum Salary:") 
+ for i:=0;i<n;i++{ 
+ if emp[i].salary == minsalary { 
+ fmt.Printf("Employee Number : %d , Employee Name ; %s Salary : 
+%2f\n",emp[i].eno,emp[i].ename,emp[i].salary) 
+} 
+ } 
+} 
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+Q2.IOT
+
+import RPi.GPIO as GPIO 
+import time GPIO.setwarnings(False) 
+GPIO.setmode(GPIO.BCM) 
+cnt = 0 
+Blink_Time = 1 # Change LED status every 1 second 
+RED_LED = 14 
+GPIO.setup(RED_LED, GPIO.OUT) 
+try: 
+ while True: 
+ if cnt == 0: 
+ GPIO.output(RED_LED, False) 
+ cnt = 1 
+ else: 
+ GPIO.output(RED_LED, True) 
+ cnt = 0 
+ time.sleep(Blink_Time) 
+except KeyboardInterrupt: 
+ # Clean up GPIO on keyboard interrupt 
+ GPIO.cleanup() 
+ ///////////////////////////////////////////////////////////
+
+Observations:
+1. Input:
+Any obstacle that comes in the range of the sensor is detected. IR sensors actually measure the
+heat being emitted from the object. So the heat is the actual input for the sensors. The IR
+sensor gets its input from GPIO 21.
+2. Output:
+The output is shown by the LED’s and the buzzer. When an obstacle is detected, the Green
+LED glows and buzzer is turned on, i.e. whenever heat is sensed by the sensor, output is
+shown.
+The output is shown by making the GPIO 15(Green LED) and GPIO 18 (buzzer) HIGH.
+
+Conclusion:
+We have successfully implemented the connection of IR sensor with Raspberry Pi/Beagle
+bone/Arduino for obstacle detection. The output is shown by a glowing LED’s and buzzer.
+
+
+

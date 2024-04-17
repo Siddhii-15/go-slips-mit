@@ -1,0 +1,92 @@
+Slip1:
+
+//Wap in go to accept user choice and print answers using arithmetic operators.
+ 
+ 
+package main
+import "fmt"
+func main(){
+ var num1 int 
+ var num2 int
+ 
+
+ fmt.Println("enter first number")
+fmt.Scanf("%d",&num1)
+  fmt.Println("enter second number")
+ fmt.Scanf("%d",&num2)
+ 
+ var choice rune
+ fmt.Println("ENter the choice(+,-):")
+ fmt.Scanf("%c",&choice)
+ 
+ switch choice{
+ 
+ case '+':{
+ fmt.Print("Adiition of num 1 and num2 is :")
+ var c int
+ c=num1+num2
+ fmt.Printf("%d",c)
+ }
+ 
+ 
+ case '-':{
+ fmt.Print("sub of num 1 and num2 is :")
+ var c int
+ c=num1-num2
+ 
+ fmt.Printf("%d",c)
+ }
+ // and continue for the multilication and division operations
+ }
+ }
+ 
+ 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+Q2.IOT
+
+import RPi.GPIO as GPIO 
+import time 
+GPIO.setwarnings(False) 
+GPIO.setmode(GPIO.BCM) 
+cnt = 0 
+Blink_Time = 1 # Change LED status every 1 second 
+RED_LED = 14 
+GPIO.setup(RED_LED, GPIO.OUT) 
+try: 
+ while True: 
+ if cnt == 0: 
+ GPIO.output(RED_LED, False) 
+ cnt = 1 
+ else: 
+ GPIO.output(RED_LED, True) 
+ cnt = 0 
+ time.sleep(Blink_Time) 
+except KeyboardInterrupt: 
+ # Clean up GPIO on keyboard interrupt 
+ GPIO.cleanup() 
+
+///////////////////////////////////////////////////////////
+
+Observations:
+1. Input:
+Any obstacle that comes in the range of the sensor is detected. IR sensors actually measure the
+heat being emitted from the object. So the heat is the actual input for the sensors. The IR
+sensor gets its input from GPIO 21.
+2. Output:
+The output is shown by the LED’s and the buzzer. When an obstacle is detected, the Green
+LED glows and buzzer is turned on, i.e. whenever heat is sensed by the sensor, output is
+shown.
+The output is shown by making the GPIO 15(Green LED) and GPIO 18 (buzzer) HIGH.
+
+Conclusion:
+We have successfully implemented the connection of IR sensor with Raspberry Pi/Beagle
+bone/Arduino for obstacle detection. The output is shown by a glowing LED’s and buzzer.
+
+
+
+
+
+
+
+
